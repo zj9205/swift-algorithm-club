@@ -20,9 +20,9 @@ A second order B-Tree with keys from 1 to 20 looks like this:
 
 ```swift
 class BTreeNode<Key: Comparable, Value> {
-  unowned var ownerTree: BTree<Key, Value>
+  unowned var owner: BTree<Key, Value>
   
-  private var keys = [Key]()
+  fileprivate var keys = [Key]()
   var children: [BTreeNode]?
   
   ...
@@ -55,7 +55,7 @@ This is necessary because nodes have to know the order of the tree.
 
 ### The code
 
-`valueForKey(_:)` method searches for the given key and if it's in the tree,  
+`value(for:)` method searches for the given key and if it's in the tree,  
 it returns the value associated with it, else it returns `nil`.
 
 ## Insertion
@@ -72,7 +72,7 @@ Keys can only be inserted to leaf nodes.
 After insertion we should check if the number of keys in the node is in the correct range.  
 If there are more keys in the node than `order*2`, we need to split the node.
 
-####Splitting a node
+#### Splitting a node
 
 1. Move up the middle key of the node we want to split, to its parent (if it has one).  
 2. If it hasn't got a parent(it is the root), then create a new root and insert to it.  
@@ -90,9 +90,9 @@ An insertion to a first order tree looks like this:
 
 ### The code
 
-The method `insertValue(_:forKey:)` does the insertion.
+The method `insert(_:for:)` does the insertion.
 After it has inserted a key, as the recursion goes up every node checks the number of keys in its child.  
-if a node has too many keys, its parent calls the `splitChild(_:atIndex:)` method on it.
+if a node has too many keys, its parent calls the `split(child:atIndex:)` method on it.
 
 The root node is checked by the tree itself.  
 If the root has too many nodes after the insertion the tree calls the `splitRoot()` method.
@@ -112,7 +112,7 @@ After a key have been removed from a node we should check that the node has enou
 If a node has fewer keys than the order of the tree, then we should move a key to it,  
 or merge it with one of its siblings.
 
-####Moving a key to the child
+#### Moving a key to the child
 
 If the problematic node has a nearest sibling that has more keys than the order of the tree,  
 we should perform this operation on the tree, else we should merge the node with one of its siblings.
@@ -123,13 +123,13 @@ If the child `c2` at index `i-1` has more keys than the order of the tree:
 
 1. We move the key at index `i-1` from the parent node to the child `c1`'s keys array at index `0`.
 2. We move the last key from `c2` to the parent's keys array at index `i-1`.
-3. (If `c1` is non-leaf) We move the last children from `c1` to `c2`'s children array at index 0.
+3. (If `c1` is non-leaf) We move the last child from `c2` to `c1`'s children array at index 0.
 
 Else:  
 
 1. We move the key at index `i` from the parent node to the end of child `c1`'s keys array.
 2. We move the first key from `c2` to the parent's keys array at index `i`.
-3. (If `c1` isn't a leaf) We move the first children from `c2` to the end of `c1`'s children array. 
+3. (If `c1` isn't a leaf) We move the first child from `c2` to the end of `c1`'s children array. 
 
 ![Moving Key](Images/MovingKey.png)
 
@@ -141,13 +141,13 @@ If `c1` has a left sibling `c2`:
 
 1. We move the key from the parent at index `i-1` to the end of `c2`'s keys array.
 2. We move the keys and the children(if it's a non-leaf) from `c1` to the end of `c2`'s keys and children array.
-3. We remove the children at index `i` from the parent node.
+3. We remove the child at index `i-1` from the parent node.
 
 Else if `c1` only has a right sibling `c2`:
 
 1. We move the key from the parent at index `i` to the beginning of `c2`'s keys array.
 2. We move the keys and the children(if it's a non-leaf) from `c1` to the beginning of `c2`'s keys and children array.
-3. We remove the children at index `i` from the parent node.
+3. We remove the child at index `i` from the parent node.
 
 After merging it is possible that now the parent node contains too few keys,  
 so in the worst case merging also can go up to the root, in which case the height of the tree decreases.
@@ -156,13 +156,13 @@ so in the worst case merging also can go up to the root, in which case the heigh
 
 ### The code
 
-- `removeKey(_:)` method removes the given key from the tree. After a key has been deleted,  
+- `remove(_:)` method removes the given key from the tree. After a key has been deleted,  
   every node checks the number of keys in its child. If a child has less nodes than the order of the tree,
-  it calls the `fixChildWithLessNodesThanOrder(_:atIndex:)` method.  
+  it calls the `fix(childWithTooFewKeys:atIndex:)` method.  
 
-- `fixChildWithLessNodesThanOrder(_:atIndex:)` method decides which way to fix the child (by moving a key to it,
-  or by merging it), then calls `moveKeyAtIndex(keyIndex:toNode:fromNode:atPosition:)` or 
-  `mergeChild(_:withIndex:toNodeAtPosition:)` method according to its choice.
+- `fix(childWithTooFewKeys:atIndex:)` method decides which way to fix the child (by moving a key to it,
+  or by merging it), then calls `move(keyAtIndex:to:from:at:)` or 
+  `merge(child:atIndex:to:)` method according to its choice.
 
 ## See also
 

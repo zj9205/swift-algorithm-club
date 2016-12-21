@@ -10,7 +10,7 @@ The goal of this project is to **explain how algorithms work**. The focus is on 
 
 All code is compatible with **Xcode 7.3** and **Swift 2.2**. We'll keep this updated with the latest version of Swift.
 
-This is a work in progress. More algorithms will be added soon. :-) 
+This is a work in progress. More algorithms will be added soon. :-)
 
 :heart_eyes: **Suggestions and contributions are welcome!** :heart_eyes:
 
@@ -26,7 +26,7 @@ This is a work in progress. More algorithms will be added soon. :-)
 
 [How to contribute](How to Contribute.markdown). Report an issue to leave feedback, or submit a pull request.
 
-[Under construction](Under Construction.markdown). Algorithms that are under construction. 
+[Under construction](Under Construction.markdown). Algorithms that are under construction.
 
 ## Where to start?
 
@@ -84,6 +84,7 @@ Special-purpose sorts:
 Bad sorting algorithms (don't use these!):
 
 - [Bubble Sort](Bubble Sort/)
+- [Slow Sort](Slow Sort/)
 
 ### Compression
 
@@ -101,6 +102,8 @@ Bad sorting algorithms (don't use these!):
 - [Permutations and Combinations](Combinatorics/). Get your combinatorics on!
 - [Shunting Yard Algorithm](Shunting Yard/). Convert infix expressions to postfix.
 - Statistics
+- [Karatsuba Multiplication](Karatsuba Multiplication/). Another take on elementary multiplication.
+- [Haversine Distance](HaversineDistance/). Calculating the distance between 2 points from a sphere.
 
 ### Machine learning
 
@@ -139,7 +142,7 @@ Most of the time using just the built-in `Array`, `Dictionary`, and `Set` types 
 ### Lists
 
 - [Linked List](Linked List/). A sequence of data items connected through links. Covers both singly and doubly linked lists.
-- Skip List
+- [Skip-List](Skip-List/). Skip List is a probablistic data-structure with same logarithmic time bound and efficiency as AVL/ or Red-Black tree and provides a clever compromise to efficiently support search and update operations.
 
 ### Trees
 
@@ -153,7 +156,7 @@ Most of the time using just the built-in `Array`, `Dictionary`, and `Set` types 
 - kd-Tree
 - [Heap](Heap/). A binary tree stored in an array, so it doesn't use pointers. Makes a great priority queue.
 - Fibonacci Heap
-- Trie
+- [Trie](Trie/). A special type of tree used to store associative data structures.
 - [B-Tree](B-Tree/). A self-balancing search tree, in which nodes can have more than two children.
 
 ### Hashing
@@ -210,6 +213,7 @@ Other algorithm repositories:
 - [@lorentey](https://github.com/lorentey/). Production-quality Swift implementations of common algorithms and data structures.
 - [Rosetta Code](http://rosettacode.org). Implementations in pretty much any language you can think of.
 - [AlgorithmVisualizer](http://jasonpark.me/AlgorithmVisualizer/). Visualize algorithms on your browser.
+- [Swift Structures](https://github.com/waynewbishop/SwiftStructures) Data Structures with directions on how to use them [here](http://waynewbishop.com/swift)
 
 ## Credits
 

@@ -18,11 +18,11 @@ public struct Deque<T> {
     return array.count
   }
   
-  public mutating func enqueue(element: T) {
+  public mutating func enqueue(_ element: T) {
     array.append(element)
   }
   
-  public mutating func enqueueFront(element: T) {
+  public mutating func enqueueFront(_ element: T) {
     array.insert(element, atIndex: 0)
   }
   
@@ -120,9 +120,9 @@ public struct Deque<T> {
   private var head: Int
   private var capacity: Int
   
-  public init(capacity: Int = 10) {
+  public init(_ capacity: Int = 10) {
     self.capacity = max(capacity, 1)
-    array = .init(count: capacity, repeatedValue: nil)
+    array = [T?](repeating: nil, count: capacity)
     head = capacity
   }
   
@@ -134,11 +134,11 @@ public struct Deque<T> {
     return array.count - head
   }
   
-  public mutating func enqueue(element: T) {
+  public mutating func enqueue(_ element: T) {
     array.append(element)
   }
   
-  public mutating func enqueueFront(element: T) {
+  public mutating func enqueueFront(_ element: T) {
     // this is explained below
   }
 
@@ -238,8 +238,8 @@ There is one tiny problem... If you enqueue a lot of objects at the front, you'r
   public mutating func enqueueFront(element: T) {
     if head == 0 {
       capacity *= 2
-      let emptySpace = [T?](count: capacity, repeatedValue: nil)
-      array.insertContentsOf(emptySpace, at: 0)
+      let emptySpace = [T?](repeating: nil, count: capacity)
+      array.insert(contentsOf: emptySpace, at: 0)
       head = capacity
     }
 
