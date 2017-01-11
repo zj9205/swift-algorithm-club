@@ -8,7 +8,7 @@ install:
 
 script:
 
-# - xcodebuild test -project ./All-Pairs\ Shortest\ Paths/APSP/APSP.xcodeproj -scheme APSPTests
+- xcodebuild test -project ./All-Pairs\ Shortest\ Paths/APSP/APSP.xcodeproj -scheme APSPTests
 - xcodebuild test -project ./Array2D/Tests/Tests.xcodeproj -scheme Tests
 - xcodebuild test -project ./AVL\ Tree/Tests/Tests.xcodeproj -scheme Tests
 - xcodebuild test -project ./Binary\ Search/Tests/Tests.xcodeproj -scheme Tests
@@ -25,7 +25,7 @@ script:
 # - xcodebuild test -project ./Heap/Tests/Tests.xcodeproj -scheme Tests
 - xcodebuild test -project ./Heap\ Sort/Tests/Tests.xcodeproj -scheme Tests
 - xcodebuild test -project ./Insertion\ Sort/Tests/Tests.xcodeproj -scheme Tests
-# - xcodebuild test -project ./K-Means/Tests/Tests.xcodeproj -scheme Tests
+- xcodebuild test -project ./K-Means/Tests/Tests.xcodeproj -scheme Tests
 # - xcodebuild test -project ./Linked\ List/Tests/Tests.xcodeproj -scheme Tests
 - xcodebuild test -project ./Longest\ Common\ Subsequence/Tests/Tests.xcodeproj -scheme Tests
 - xcodebuild test -project ./Minimum\ Spanning\ Tree\ \(Unweighted\)/Tests/Tests.xcodeproj -scheme Tests
@@ -37,9 +37,10 @@ script:
 # - xcodebuild test -project ./Select\ Minimum\ Maximum/Tests/Tests.xcodeproj -scheme Tests
 - xcodebuild test -project ./Selection\ Sort/Tests/Tests.xcodeproj -scheme Tests
 # - xcodebuild test -project ./Shell\ Sort/Tests/Tests.xcodeproj -scheme Tests
-# - xcodebuild test -project ./Shortest\ Path\ \(Unweighted\)/Tests/Tests.xcodeproj -scheme Tests
+- xcodebuild test -project ./Shortest\ Path\ \(Unweighted\)/Tests/Tests.xcodeproj -scheme Tests
 # - xcodebuild test -project ./Single-Source\ Shortest\ Paths\ \(Weighted\)/SSSP.xcodeproj -scheme SSSPTests
 - xcodebuild test -project ./Stack/Tests/Tests.xcodeproj -scheme Tests
 - xcodebuild test -project ./Topological\ Sort/Tests/Tests.xcodeproj -scheme Tests
 - xcodebuild test -project ./Treap/Treap/Treap.xcodeproj -scheme Tests
 - xcodebuild test -project ./Palindromes/Test/Test.xcodeproj -scheme Test
+- xcodebuild test -project ./Ternary\ Search\ Tree/Tests/Tests.xcodeproj -scheme Tests
